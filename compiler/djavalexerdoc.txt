@@ -1,0 +1,81 @@
+Documentation for djavalexer:
+
+1. Each token and each DFA state must be given a name (a string).
+   a. To keep the names separate, I start token names with upper-case
+      letters and state with lower-case letters.
+   b. To avoid having to put quotes all over, it is good to start the
+      file with a list of variables having the names of the tokens
+      and states, assigning to each the string with that same name.
+      (Note: this has nothing to do with what the tokens look like,
+      it is just a matter of giving them names for now.)
+   c. In addition, it is useful to define several other names.
+      Give the empty string a name (e.g Empty).  Token names
+      correspond to actions - namely, emitting those tokens.
+      However, some actions do not correspond to tokens, e.g.
+      Error and Discard.  It is helpful to define these as tokens.
+      Another example is IdentOrKw, which is the action taken when
+      an identifier is recognized - namely, to check whether the
+      identifer is actually a keyword.
+
+2. Define lists giving all the tokens and all states.
+
+3. The DFA is a list of state descriptions.   Each state description
+   is a triple [state, action, transitions].  The action is usually
+   a token name, although as noted above there are a few other
+   possibilities, e.g Error.  transitions is a list
+   of transitions, each a pair [test, state].  The test is a string
+   that gives a test to be included in the Java code; it can include
+   the variable name "ch" to refer to the current character.
+   I have found it convenient to define Python functions to generate
+   these conditions, e.g. oneOf(s) generates a predicate "ch == 'c1' ||
+   ... || ch == 'cn', where s is the string "c1...cn". Thus, for
+   example, if a digit is seen in the start state, it transitions to
+   the "number" state, which represents an integer literal; in that
+   state, another digit takes it back to the number state, but a
+   period takes it to a floating-point state.  Thus, the description
+   of the number state is
+
+         [number, Intlit, [[isDigit, number],
+       	  	           ["ch == '.'", float1]]]
+   
+   or, using the function just mentioned,
+
+         [number, Intlit, [[isDigit, number],
+       	  	           [oneOf(".", float1]]]
+
+   isDigit is the string  "'0' <= ch && ch <= '9'".
+
+4. Note that the action given in a state description is taken when
+   the DFA *ends* in that state - that is, when there is no
+   transition from that state on the input character.
+   When generating the code, when a given action is to occur,
+   the code emitted is calculated by calling doaction(action, state).
+   For most cases, this returns "emit(tokens.<action>)", where
+   <action> is the name of this action.
+
+5. Call djavalexer.genlexer(file).  This will place the generated code into
+   the named file.  The code is in four parts:
+
+   a. A definition of enum type "tokens", including all the token
+      names.  This should be placed into file tokens.java.
+
+   b. A definition of enum type "states", including all the state
+      names.  This should be placed in Lexer.java just after the
+      comment line that reads "START of enum states".
+
+   c. Code to place in the body of a function that tests whether
+      a token is a keyword.  (This can only be done if the keywords
+      were placed in a list "keywords".)  This is for the situation
+      where it is easiest to recognize all keywords as identifiers
+      and then subsequently check if they are keywords.  Place this
+      in Lexer.java after the comment line that says "START of gen'd
+      keyword test".  Note that the strings defined as keywords are
+      the exact strings that will be matched (ignoring case).
+
+   d. The DFA code.  Place this in Lexer.java after the comment line
+      that says "START of generated code here."
+
+6. In addition, a type for the generated list of tokens, called
+   TokenList, must be defined.  It should define method add(token),
+   and methods add(token,  v), where v are values associated with
+   particular types of tokens.

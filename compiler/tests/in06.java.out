@@ -1,0 +1,11 @@
+mkBinOp(Minus,
+         mkBinOp(Plus,
+            mkConst(1),
+            mkConst(2)),
+         mkBinOp(Mod,
+            mkBinOp(Slash,
+               mkBinOp(Star,
+                  mkUnaryOp(Minus, mkConst(3)),
+                  mkConst(4)),
+               mkConst(5)),
+            mkConst(2)))

@@ -1,0 +1,5 @@
+mkSeqStmt(2, mkSeqStmt(2, new VarDecl(new NamedType("matrix"), "m"),
+      new VarDecl(new NamedType("matrix"), "n")),
+      mkSeqStmt(3, new VarDecl(new IntType(), "x"),
+      new VarDecl(new IntType(), "y"),
+      new VarDecl(new IntType(), "z")))

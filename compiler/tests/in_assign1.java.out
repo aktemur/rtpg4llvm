@@ -1,0 +1,3 @@
+mkBinOp(PlusEqual,
+         new VarExpr("x"),
+         mkConst(1))

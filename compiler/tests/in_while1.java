@@ -1,0 +1,4 @@
+/*stmt*/
+while(true) { 
+    x++;
+}

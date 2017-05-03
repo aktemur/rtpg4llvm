@@ -1,0 +1,3 @@
+* Run ./runAllPythonTests.sh first. This should be done once per each machine.
+* Run ./runAllSpMVlibTests.sh next. Consult this file if you want to run method tests individually.
+* Run ./compareSpMVlibAndPython.sh to check if spMVlib is correct wrt Python-generated code.

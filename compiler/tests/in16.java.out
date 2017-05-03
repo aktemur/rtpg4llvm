@@ -1,0 +1,6 @@
+new FuncCallExpr("f",
+      mkExprList(5, mkConst(1),
+      mkConst(2),
+      mkConst(3),
+      mkConst(4),
+      mkConst(5)))

@@ -1,0 +1,7 @@
+new WhileStmt(mkBinOp(Less,
+         new VarExpr("x"),
+         mkConst(10)),
+      mkScopedStmt(3, new IfElseStmt(mkConst(true),
+      new ContinueStmt()),
+      new ExprStmt(mkUnaryPostOp(PlusPlus, new VarExpr("x"))),
+      new BreakStmt()))

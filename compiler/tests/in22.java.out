@@ -1,0 +1,1 @@
+new VarDecl(new PtrType(new PtrType(new IntType())), "x", new VarExpr("y"))

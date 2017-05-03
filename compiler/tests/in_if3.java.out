@@ -1,0 +1,7 @@
+new IfElseStmt(mkConst(true),
+      mkScopedStmt(1, new ExprStmt(mkBinOp(Equal,
+         new VarExpr("x"),
+         mkConst(1)))),
+      mkScopedStmt(1, new ExprStmt(mkBinOp(Equal,
+         new VarExpr("x"),
+         mkConst(2)))))

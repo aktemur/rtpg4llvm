@@ -1,0 +1,3 @@
+mkBinOp(Plus,
+         new ArrayExpr(new VarExpr("x"), mkConst(2)),
+         new ArrayExpr(new VarExpr("y"), mkConst(5)))

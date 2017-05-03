@@ -1,0 +1,4 @@
+new FuncDeclaration(new IntType(),
+      "foo",
+      mkFormals(0),
+      mkScopedStmt(1, new ReturnStmt(mkConst(5))))

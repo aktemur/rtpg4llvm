@@ -1,0 +1,4 @@
+new FuncDeclaration(new VoidType(),
+      "foo",
+      mkFormals(0),
+      mkScopedStmt(0))

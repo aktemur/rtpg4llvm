@@ -1,0 +1,26 @@
+      class C {
+       new method(new atype("Int"),
+      "f",
+      new formals(),
+      new SeqStmt(new ExprStmt(new binaryop(Equal,
+         new ident("x"),
+         mkStringlit("ab`stmt( >$expr<c"))),
+      new ExprStmt(new binaryop(Equal,
+         new ident("x"),
+         new nameorargslist(new unarypreoptr(Star, new ident("y")),
+         "m"))),
+      new ExprStmt(new binaryop(Equal,
+         new nameorargslist(new ident("a"),
+         new listexpr(new ident("i"))),
+         new nameorargslist( x ,
+         f,
+         g))),
+      new ExprStmt(new binaryop(Equal,
+         new ident("w"),
+         new binaryop(Plus,
+            new ident("z"),
+            new ident("y")))),
+      new ExprStmt(new funcall(getname(),
+      new exprlist()))))
+       /* >$  */
+   }

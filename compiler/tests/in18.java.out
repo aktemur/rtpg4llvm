@@ -1,0 +1,1 @@
+new VarDecl(new IntType(), "x")

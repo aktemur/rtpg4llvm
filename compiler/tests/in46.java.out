@@ -1,0 +1,13 @@
+mkProgram(2, new FuncDeclaration(new VoidType(),
+      "foo",
+      mkFormals(3, new FuncParam(new ArrayType(new PtrType(new IntType())), "x"),
+         new FuncParam(new ArrayType(new IntType()), "y"),
+         new FuncParam(new ArrayType(new IntType()), "z")),
+      mkScopedStmt(2, new VarDecl(new ArrayType(new IntType(),3), "rows"),
+      new VarDecl(new ArrayType(new IntType(),3), "rows", mkConst(4)))),
+   new FuncDeclaration(new VoidType(),
+      "bar",
+      mkFormals(2, new FuncParam(new IntType(), "x"),
+         new FuncParam(new ArrayType(new IntType()), "y")),
+      mkScopedStmt(2, new VarDecl(new ArrayType(new PtrType(new IntType()),5), "rows"),
+      new VarDecl(new ArrayType(new PtrType(new IntType()),5), "rows", mkConst(3)))))

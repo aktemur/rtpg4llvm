@@ -1,0 +1,5 @@
+new FuncDeclaration(new PtrType(new IntType()),
+      "foo",
+      mkFormals(2, new FuncParam(new IntType(), "x"),
+         new FuncParam(new DoubleType(), "y")),
+      mkScopedStmt(0))

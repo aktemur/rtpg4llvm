@@ -1,0 +1,2 @@
+mkScopedStmt(1, new WhileStmt(mkConst(true),
+      mkScopedStmt(1, new ExprStmt(mkConst(0)))))

@@ -1,0 +1,9 @@
+mkBinOp(Plus,
+         mkBinOp(Plus,
+            mkUnaryOp(Star, new VarExpr("y")),
+            mkBinOp(Star,
+               mkUnaryOp(Ampersand, new VarExpr("x")),
+               mkUnaryOp(Star, mkUnaryPostOp(PlusPlus, new VarExpr("col"))))),
+         mkBinOp(Star,
+            mkUnaryOp(MinusMinus, new VarExpr("x")),
+            mkUnaryOp(Ampersand, new ArrayExpr(new VarExpr("x"), new VarExpr("i")))))

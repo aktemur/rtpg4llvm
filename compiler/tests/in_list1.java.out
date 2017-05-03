@@ -1,0 +1,4 @@
+new ListExpr(mkExprList(4, mkConst(1),
+      mkConst(2),
+      mkUnaryOp(Minus, mkConst(3)),
+      mkConst(4)))

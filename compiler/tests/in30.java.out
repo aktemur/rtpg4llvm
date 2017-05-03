@@ -1,0 +1,4 @@
+mkScopedStmt(2, new VarDecl(new IntType(), "x"),
+      new ExprStmt(mkBinOp(Equal,
+         new VarExpr("x"),
+         mkConst(2))))

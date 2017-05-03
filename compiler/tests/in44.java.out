@@ -1,0 +1,3 @@
+mkBinOp(Equal,
+         mkUnaryOp(Star, new VarExpr("x")),
+         mkConst(42))

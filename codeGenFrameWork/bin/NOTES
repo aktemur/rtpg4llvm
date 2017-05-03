@@ -1,0 +1,2 @@
+* Clang adds labels to functions similar to the following: nounwind uwtable ssp
+Are these necessary? 

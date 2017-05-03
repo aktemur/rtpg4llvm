@@ -1,0 +1,74 @@
+Documentation for LL1.py:
+
+1. Grammar needs to be placed at the start of function init().
+   Format of grammar is explained below.  (I put the grammar in
+   a separate file and insert it before loading LL1.py.  I know.)
+
+2. LL1.py has three entry points:
+   LL1.checkLL1() : checks and reports on whether grammar is LL(1)
+   LL1.printgrammar(file): outputs grammar in tex format to file.
+      File should be "grammar.tex".  Then, execute "pdflatex thegrammar.tex"
+      and the resulting pdf file (thegrammar.pdf) will have the printed
+      version of the grammar.
+   LL1.genparser(file):  outputs generated parsing code to the file.
+      This code is in two parts.  The first is an enum type
+      "nonterms" that should be placed into a file "nonterms.java".
+      The second is a set of parser function definitions that should
+      be inserted into Parser.java at indicated points.
+
+3. The grammar file inserted into "init()" has the following form:
+   a. It begins with a list of token names assigned to variables
+      of the same name (e.g. Comma = "Comma"), as in djavalexer.py.
+      This should also include Empty = "" if the grammar has any
+      epsilon productions.
+   b. This is followed by a similar list of nonterminals.  I use
+      names starting with upper-case letters for tokens and ones
+      starting with lower-case letters for nonterminals.
+      (Neither of the above is technically necessary; instead the
+      strings could be included directly in the grammar.)
+   c. Next the variable grammar is defined.  It holds the grammar
+      itself, in this format:  A list of nonterminal, each nonterminal
+      a pair giving the nonterminal name and the right-hand sides
+      for that nonterminal.  The latter is given as a list
+      of lists of symbols.  For example, an "expression" is either
+      a "primary" followed by an "optional expression continuation",
+      or an increment operator followed by an expression:
+
+        [expression, [[primary, exprContOpt], [incrOptr, expression]]]
+
+      An epsilon production is represented as [Empty]; Empty should
+      be used only in this way.
+
+   d. There is an additional option for right-hand sides:  The first
+      element in a right-hand side can be a one-element list containing
+      a string.  This string is inserted in the predicate that
+      determines whether this production applies.  In that string,
+      variable "tok" can be used to refer to the current token
+      and "toklis.peek(<i>)" can be used to refer to future tokens;
+      "toklis.peek(0)" is the next token (after the current one),
+      etc.  For example, a labelled statement is an identifier
+      followed by a colon followed by a statement, but one-symbol
+      lookahead cannot distinguish this from an expression statement.
+      So the rhs for labelled statements could be given as:
+
+            [["toklis.peek(0) == tokens.Colon"],
+	                   Identifier, Colon, statement]
+
+4. The generated parser (that is, Parser.java, after inserting the
+   generated code per item 2 above) has a constructor that takes a
+   TokenList as argument.  It defines a method for each nonterminal.
+   Its name is the word "parse" followed by the nonterminal.  It
+   has no arguments and returns a value of type CST, which stands
+   for "concrete syntax tree."  Thus, the parser might be used
+   like this:
+
+ 	TokenList L = new Lexer().lexer(<filename>);
+	Parser p = new Parser(L);
+	CST t = p.parse<start symbol>()
+
+   The CST class includes functions to access parts of the tree,
+   and a toString function allowing you to view the parse tree.
+
+5. There is no way to add actions to the grammar.  Any processing
+   of the input is done by writing functions on the returned CST
+   object.

@@ -1,0 +1,4 @@
+new IfElseStmt(mkConst(true),
+      new ExprStmt(mkBinOp(Equal,
+         new VarExpr("x"),
+         mkConst(1))))

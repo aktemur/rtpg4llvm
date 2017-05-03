@@ -1,0 +1,1 @@
+mkScopedStmt(1, new VarDecl(new IntType(), "x"))

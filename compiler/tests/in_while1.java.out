@@ -1,0 +1,2 @@
+new WhileStmt(mkConst(true),
+      mkScopedStmt(1, new ExprStmt(mkUnaryPostOp(PlusPlus, new VarExpr("x")))))

@@ -1,0 +1,3 @@
+mkBinOp(Equal,
+         new ArrayExpr(new VarExpr("x"), mkConst(2)),
+         mkConst(42))

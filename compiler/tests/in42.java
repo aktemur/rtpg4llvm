@@ -1,0 +1,2 @@
+/*stmt*/
+return x;

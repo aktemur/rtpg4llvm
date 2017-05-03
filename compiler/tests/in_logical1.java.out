@@ -1,0 +1,9 @@
+mkBinOp(LogicalOr,
+         mkBinOp(LogicalOr,
+            mkBinOp(LogicalAnd,
+               new VarExpr("x"),
+               new VarExpr("y")),
+            mkBinOp(LogicalAnd,
+               new VarExpr("z"),
+               new VarExpr("w"))),
+         new VarExpr("t"))

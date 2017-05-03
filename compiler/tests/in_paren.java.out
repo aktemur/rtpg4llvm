@@ -1,0 +1,9 @@
+mkBinOp(Star,
+         mkBinOp(Star,
+            mkBinOp(Plus,
+               mkConst(1),
+               mkConst(2)),
+            mkConst(4)),
+         mkBinOp(Minus,
+            mkConst(5),
+            mkConst(6)))

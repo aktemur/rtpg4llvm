@@ -1,0 +1,8 @@
+new IfElseStmt(mkConst(true),
+      new IfElseStmt(mkConst(false),
+      new ExprStmt(mkBinOp(Equal,
+         new VarExpr("x"),
+         mkConst(1))),
+      new ExprStmt(mkBinOp(Equal,
+         new VarExpr("x"),
+         mkConst(2)))))

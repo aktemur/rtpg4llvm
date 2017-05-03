@@ -1,0 +1,3 @@
+mkProgram(3, new ExternDecl(new PtrType(new IntType()), "x"),
+   new ExternDecl(new ArrayType(new IntType()), "x"),
+   new ExternDecl(new ArrayType(new PtrType(new IntType())), "x"))

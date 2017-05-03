@@ -1,0 +1,5 @@
+mkBinOp(Plus,
+         new FieldAccess(new VarExpr("m"),
+         "rows"),
+         new FieldAccess(new VarExpr("m"),
+         "cols"))

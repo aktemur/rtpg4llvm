@@ -1,0 +1,4 @@
+mkSeqStmt(4, new VarDecl(new IntType(), "x", true),
+      new VarDecl(new PtrType(new IntType()), "x", true),
+      new VarDecl(new ArrayType(new IntType(),3), "x", true),
+      new VarDecl(new ArrayType(new PtrType(new IntType()),3), "x", true))

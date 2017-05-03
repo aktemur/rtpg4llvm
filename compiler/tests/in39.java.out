@@ -1,0 +1,6 @@
+mkProgram(6, new GlobalDecl(new DoubleType(), "rows"),
+   new GlobalDecl(new PtrType(new DoubleType()), "rows"),
+   new GlobalDecl(new ArrayType(new PtrType(new DoubleType()),3), "rows"),
+   new GlobalDecl(new DoubleType(), "rows", mkConst(5.5)),
+   new GlobalDecl(new ArrayType(new DoubleType(),3), "rows"),
+   new GlobalDecl(new ArrayType(new DoubleType(),3), "rows", mkUnaryOp(Minus, mkConst(5.5))))

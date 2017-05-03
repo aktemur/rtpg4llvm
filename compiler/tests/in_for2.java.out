@@ -1,0 +1,11 @@
+mkSeqStmt(3, mkScopedStmt(3, new VarDecl(new IntType(), "i"),
+      new ExprStmt(mkBinOp(Equal,
+         new VarExpr("i"),
+         mkConst(0))),
+      new WhileStmt(mkBinOp(Less,
+         new VarExpr("i"),
+         mkConst(10)),
+      mkScopedStmt(2, new ExprStmt(mkConst(0)),
+      new ExprStmt(mkUnaryPostOp(PlusPlus, new VarExpr("i")))))),
+      new ExprStmt(mkConst(1)),
+      new ExprStmt(mkConst(2)))

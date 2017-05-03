@@ -1,0 +1,2 @@
+/*compunit*/
+void foo() { }
