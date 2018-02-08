@@ -83,7 +83,7 @@ Now compile this file by linking to the rtpg4llvm library.
     4^5=1024
 ```
 
-See the [spMVlib](spMVLib-rtpg4llvm) library for a much bigger use case.
+See the [spMVlib](spMVlib-rtpg4llvm) library for a much bigger use case.
 
 
 ### Mac OS
@@ -114,7 +114,7 @@ CompileUnit *aGlobalVar = $compunit< int counter = 0; >$;
 ```
 
 ### Anti-quotations
-Anti-quotations are used for splicing a code object into another one. For the sake of parsing, a syntactic category must be provided when antiquoting. The recognized categories are `int`, `double`, `expr`, `stmt`, `list`, `unit` and `name`. ``int`, ``double`, and ``list` are used for lifting constant values. ``list` expects an `int` or a `double` array, together with its length as the second argument. It is useful when declaring an initialized array. ``unit` can be used to splice compilation units into a program. ``name` is useful when giving a variable or a function a generated name. Examples:
+Anti-quotations are used for splicing a code object into another one. For the sake of parsing, a syntactic category must be provided when antiquoting. The recognized categories are `int`, `double`, `expr`, `stmt`, `list`, `unit` and `name`. `int`, `double`, and `list` are used for lifting constant values. `list` expects an `int` or a `double` array, together with its length as the second argument. It is useful when declaring an initialized array. `unit` can be used to splice compilation units into a program. `name` is useful when giving a variable or a function a generated name. Examples:
 
 ```cpp
 //*** `int 
@@ -238,10 +238,10 @@ The following is a list of capabilities and limitations of the language that can
 * Elements of an array initialization list must be literals. This is handled at the parsing phase.
 * Global variable initalizations can be made using literal expressions only. This is handled at the parsing phase.
 * Dimension of an array must be specified even when initialized using the list notation. E.g.
-```cpp
-int rows[3] = {1,2,3}; // OK
-int rows[] = {1,2,3}; // OK in C, but rejected by our parser.
-```
-This rule does not apply to externs, of course.
+    ```cpp
+    int rows[3] = {1,2,3}; // OK
+    int rows[] = {1,2,3}; // OK in C, but rejected by our parser.
+    ```
+  This rule does not apply to externs, of course.
 * The __restrict__ keyword can be used in formal parameter declaration of functions. This keyword can also be used in local var declarations, but it's ignored because Clang ignores it, too.
 * To enable more optimizations, declare all local variables of a function manually at the beginning of the function.
